@@ -1,0 +1,28 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: microservicecloud-zuul-gateway
+
+zuul:
+  prefix: /wzj
+  #ignored-services: microservicecloud-dept 禁止使用真实微服务名访问
+  ignored-services: "*"
+  routes:
+    mydept.serviceId: microservicecloud-dept
+    mydept.path: /mydept/**
+
+eureka:
+  client: #客户端注册进eureka服务列表中
+    service-url:
+      defaultZone: http://eureka7002.com:7002/eureka/,http://eureka7001.com:7001/eureka/,http://eureka7003.com:7003/eureka/  #eureka服务地址
+  instance:
+    instance-id: gateway-9527.com  #自定义服务名称信息
+    prefer-ip-address: true #访问路径可以显示ip地址
+
+info: #配置info信息链接
+  app.name: wzj-microservicecloud
+  company.name: www.wzj.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$

@@ -1,7 +1,6 @@
 package com.wzj.springcloud.dao;
 
 
-
 import com.wzj.springcloud.entities.Dept;
 import org.apache.ibatis.annotations.Mapper;
 
